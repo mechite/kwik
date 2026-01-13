@@ -671,8 +671,8 @@ public class ServerConnectionImpl extends QuicConnectionImpl implements ServerCo
     }
 
     @Override
-    public InetSocketAddress getInitialClientAddress() {
-        return initialClientAddress;
+    public InetAddress getInitialClientAddress() {
+        return initialClientAddress.getAddress();
     }
 
     @Override
