@@ -74,17 +74,16 @@ public class ReceiveBufferImpl implements ReceiveBuffer {
     }
 
     private void notifyWriter(boolean force) {
-        if (stream == null || stream.connection == null || stream.connection.readListener == null) return;
+        if (stream == null || stream.connection == null || stream.connection.getStreamReadListener() == null) return;
         if (stream.isInputClosed()) return;
 
         long avail = bytesAvailable();
         if (force || avail != lastAvailData) {
             lastAvailData = avail;
             ListenerThreadPool.execute(stream, () -> {
-                if (!stream.isInputClosed()) {
-                    stream.connection.readListener.read(stream, avail);
-                }
-            });
+				if (stream.isInputClosed()) return;
+				stream.connection.getStreamReadListener().read(stream, avail);
+			});
         }
     }
 

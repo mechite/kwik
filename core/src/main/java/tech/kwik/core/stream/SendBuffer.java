@@ -66,7 +66,9 @@ public class SendBuffer {
     }
 
     public void notifyCanWrite(boolean force) {
-        var l = (stream != null && stream.connection != null) ? stream.connection.writeListener : null; // use o listener que você já tem
+        var l = (stream != null && stream.connection != null)
+                ? stream.connection.getStreamWriteListener() :
+                null;
         if (l == null) return;
         else if (stream.isOutputClosed()) return;
 
