@@ -19,7 +19,11 @@
 package tech.kwik.core.stream;
 
 import tech.kwik.core.common.EncryptionLevel;
-import tech.kwik.core.frame.*;
+import tech.kwik.core.frame.QuicFrame;
+import tech.kwik.core.frame.ResetStreamFrame;
+import tech.kwik.core.frame.StreamDataBlockedFrame;
+import tech.kwik.core.frame.DataBlockedFrame;
+import tech.kwik.core.frame.StreamFrame;
 import tech.kwik.core.log.Logger;
 
 import java.io.IOException;
