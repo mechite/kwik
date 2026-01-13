@@ -39,7 +39,6 @@ class StreamOutputStreamImpl extends StreamOutputStream implements FlowControlUp
     private static final int MIN_FRAME_SIZE = 1 + 8 + 8 + 2 + 1;
 
     private final QuicStreamImpl quicStream;
-    private final Object lock = new Object();
 
     private final SendBuffer sendBuffer;
     private final Logger log;
