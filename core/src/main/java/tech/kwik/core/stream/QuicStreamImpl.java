@@ -39,6 +39,7 @@ public class QuicStreamImpl implements QuicStream {
     protected final int streamId;
     protected final Role role;
     protected final QuicConnectionImpl connection;
+    final ListenerThreadPool listenerPool;
     private final StreamManager streamManager;
     protected final Logger log;
     private final StreamInputStream inputStream;
@@ -83,6 +84,7 @@ public class QuicStreamImpl implements QuicStream {
         }
 
         stateLock = new ReentrantLock();
+        listenerPool = new ListenerThreadPool();
     }
 
     private long determineInitialReceiveBufferSize() {
