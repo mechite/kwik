@@ -80,7 +80,7 @@ public class SendBuffer {
         if (force || report != lastReportedAvail || canWrite != lastReportedWritable) {
             lastReportedAvail = report;
             lastReportedWritable = canWrite;
-            this.stream.listenerPool.execute(stream, () -> {
+            this.stream.listenerPool.execute(() -> {
 				if (stream.isOutputClosed()) return;
 				listener.write(stream, report);
 			});

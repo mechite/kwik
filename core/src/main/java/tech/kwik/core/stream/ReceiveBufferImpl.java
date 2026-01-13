@@ -80,7 +80,7 @@ public class ReceiveBufferImpl implements ReceiveBuffer {
         long avail = bytesAvailable();
         if (force || avail != lastAvailData) {
             lastAvailData = avail;
-            this.stream.listenerPool.execute(stream, () -> {
+            this.stream.listenerPool.execute(() -> {
 				if (stream.isInputClosed()) return;
 				stream.connection.getStreamReadListener().read(stream, avail);
 			});
