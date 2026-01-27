@@ -13,4 +13,5 @@ jobs:
         java-version: 17
         distribution: semeru
     - uses: gradle/actions/setup-gradle@v5
+    - run: ./gradlew --version
     - run: ./gradlew build
