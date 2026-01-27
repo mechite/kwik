@@ -1,0 +1,16 @@
+on:
+- push
+- pull_request
+- workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: graalvm/setup-graalvm@v1
+      with:
+        java-version: 25
+        distribution: graalvm
+    - uses: gradle/actions/setup-gradle@v5
+    - run: ./gradlew build
